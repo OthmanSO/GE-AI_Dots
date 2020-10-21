@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,8 +10,9 @@ public class DotsGA extends JPanel {
 	private JFrame frame;
 	private Population pop;
 	private JLabel gen;
-	
+	int framerate;
 	public DotsGA() {
+		framerate=60;
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setSize(500, 700);
@@ -25,11 +27,19 @@ public class DotsGA extends JPanel {
 	private void createPopulation() {
 		pop = new Population(50);
 	}
-	
+	//just need fix this is just try
 	private void play() {
-		//////////////////////////////
-		this.breedNewBabies();
+		while(true) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(1000/framerate);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    this.repaint();
+		
 	}
+}
 
 	private void breedNewBabies() {
 		// TODO Auto-generated method stub

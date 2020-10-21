@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Population {
 	
@@ -7,9 +6,11 @@ public class Population {
 	
 	public Population(int pop) {
 		Dots_population = new Dot[pop];
-		for (Dot d : Dots_population) {
-			d = new Dot();
+		for (int i = 0; i < Dots_population.length; i++) {
+			Dots_population[i]= new Dot();
 		}
 	}
+	
+	
 
 }
