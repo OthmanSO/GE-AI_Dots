@@ -106,7 +106,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		panel.setToolTipText("samples count");
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
-		panel.setBounds(10, 40, 450, 620);
+		panel.setBounds(10, 25, 450, 620);
 		contentPane.add(panel);
 		
 		JButton btnNewButton = new JButton("Next generation");
