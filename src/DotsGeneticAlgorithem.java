@@ -64,13 +64,14 @@ public class DotsGeneticAlgorithem extends JFrame {
 		samplesnum.setColumns(3);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Auto next generation");
+		chckbxNewCheckBox.setBackground(SystemColor.info);
 		chckbxNewCheckBox.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 12));
 		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxNewCheckBox.setBounds(470, 339, 199, 23);
 		contentPane.add(chckbxNewCheckBox);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(UIManager.getColor("CheckBox.light"));
+		panel_1.setBackground(SystemColor.info);
 		panel_1.setBounds(470, 118, 199, 117);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -83,6 +84,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		panel_1.add(gen);
 		
 		textField_1 = new JTextField();
+		textField_1.setBackground(SystemColor.info);
 		textField_1.setFont(new Font("Segoe Print", Font.PLAIN, 15));
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
@@ -90,6 +92,8 @@ public class DotsGeneticAlgorithem extends JFrame {
 		panel_1.add(textField_1);
 		
 		JButton btnNewButton_1 = new JButton("Reset Maze");
+		btnNewButton_1.setBackground(new Color(245, 222, 179));
+		btnNewButton_1.setForeground(SystemColor.infoText);
 		btnNewButton_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,6 +119,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel background = new JLabel("New label");
+		background.setBackground(new Color(240, 240, 240));
 		background.setIcon(new ImageIcon(DotsGeneticAlgorithem.class.getResource("/imgs/mazebackground.jpg")));
 		background.setBounds(0, 0, 700, 700);
 		contentPane.add(background);
