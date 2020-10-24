@@ -34,8 +34,8 @@ public class DotsGeneticAlgorithem extends JFrame {
 	private JTextField gencount;
 	private MazeGenerator mg;
 	private JTextField samplesnum;
-	
 	static Integer lastint;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
