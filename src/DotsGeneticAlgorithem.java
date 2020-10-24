@@ -59,19 +59,19 @@ public class DotsGeneticAlgorithem extends JFrame {
 		samplesnum.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		samplesnum.setHorizontalAlignment(SwingConstants.CENTER);
 		samplesnum.setText("50");
-		samplesnum.setBounds(554, 609, 66, 35);
+		samplesnum.setBounds(542, 609, 66, 35);
 		contentPane.add(samplesnum);
 		samplesnum.setColumns(3);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Auto next generation");
 		chckbxNewCheckBox.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 12));
 		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxNewCheckBox.setBounds(485, 339, 199, 23);
+		chckbxNewCheckBox.setBounds(470, 339, 199, 23);
 		contentPane.add(chckbxNewCheckBox);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(UIManager.getColor("CheckBox.light"));
-		panel_1.setBounds(485, 117, 199, 117);
+		panel_1.setBounds(470, 118, 199, 117);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -95,10 +95,11 @@ public class DotsGeneticAlgorithem extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(485, 564, 199, 35);
+		btnNewButton_1.setBounds(470, 563, 199, 35);
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
+		panel.setToolTipText("samples count");
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
 		panel.setBounds(10, 40, 450, 620);
@@ -109,7 +110,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(485, 277, 199, 35);
+		btnNewButton.setBounds(470, 278, 199, 35);
 		contentPane.add(btnNewButton);
 		
 		JLabel background = new JLabel("New label");
