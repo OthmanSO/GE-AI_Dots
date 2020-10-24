@@ -24,8 +24,11 @@ public class DotsGeneticAlgorithem extends JFrame {
 
 	private JPanel contentPane;
 	private Population pop;
-	int framerate;
+	private int framerate;
 	private JTextField textField_1;
+	private MazeGenerator mg;
+	private JTextField samplesnum;
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,6 +54,14 @@ public class DotsGeneticAlgorithem extends JFrame {
 		setContentPane(contentPane);
 		framerate=60;
 		contentPane.setLayout(null);
+		
+		samplesnum = new JTextField();
+		samplesnum.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
+		samplesnum.setHorizontalAlignment(SwingConstants.CENTER);
+		samplesnum.setText("50");
+		samplesnum.setBounds(554, 609, 66, 35);
+		contentPane.add(samplesnum);
+		samplesnum.setColumns(3);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Auto next generation");
 		chckbxNewCheckBox.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 12));
@@ -84,13 +95,13 @@ public class DotsGeneticAlgorithem extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(485, 608, 199, 35);
+		btnNewButton_1.setBounds(485, 564, 199, 35);
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
-		panel.setBounds(25, 25, 450, 620);
+		panel.setBounds(10, 40, 450, 620);
 		contentPane.add(panel);
 		
 		JButton btnNewButton = new JButton("Next generation");
@@ -106,4 +117,15 @@ public class DotsGeneticAlgorithem extends JFrame {
 		background.setBounds(0, 0, 700, 700);
 		contentPane.add(background);
 	}
+	
+	
+	
+	
+	
+	
+	
+	private void ResetALL() {
+		pop = new Population(50);
+	}
+	
 }
