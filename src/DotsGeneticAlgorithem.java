@@ -29,12 +29,12 @@ import javax.swing.JCheckBox;
 public class DotsGeneticAlgorithem extends JFrame {
 
 	private JPanel contentPane;
-	private Population pop;
-	private int framerate;
 	private JTextField gencount;
-	private MazeGenerator mg;
 	private JTextField samplesnum;
 	static Integer lastint;
+	private MazeGenerator mg;
+	private Population pop;
+	private int framerate;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,6 +51,10 @@ public class DotsGeneticAlgorithem extends JFrame {
 
 	
 	public DotsGeneticAlgorithem() {
+		mg = new MazeGenerator();
+		framerate = 60;
+		pop = new Population(50);
+		lastint = 50;
 		setType(Type.UTILITY);
 		setTitle("Amazy Mazy");
 		setResizable(false);
@@ -58,9 +62,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		framerate=60;
 		contentPane.setLayout(null);
-		
 		samplesnum = new JTextField();
 		samplesnum.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		samplesnum.setHorizontalAlignment(SwingConstants.CENTER);
@@ -166,9 +168,19 @@ public class DotsGeneticAlgorithem extends JFrame {
 	
 	
 	
-	
+	// regenerate new maze + new population with the number of samples that given in samplesnum JTextField
 	private void ResetALL() {
 		pop = new Population(Integer.parseInt(samplesnum.getText()));
 	}
+	
+	
+	// this function should generate the new generation 
+	private void newGeneration() {
+		
+	}
+	
+	
+	
+	
 	
 }
