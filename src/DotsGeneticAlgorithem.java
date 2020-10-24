@@ -94,6 +94,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		contentPane.add(panel);
 		
 		JButton btnNewButton = new JButton("Next generation");
+		btnNewButton.setBackground(SystemColor.info);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
