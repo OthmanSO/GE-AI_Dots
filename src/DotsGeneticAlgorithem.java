@@ -126,7 +126,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 	
 	
 	private void ResetALL() {
-		pop = new Population(50);
+		pop = new Population(Integer.parseInt(samplesnum.getText()));
 	}
 	
 }
