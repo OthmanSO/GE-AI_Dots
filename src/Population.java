@@ -10,7 +10,7 @@ public class Population {
 			Dots_population[i]= new Dot();
 		}
 	}
-	// inherit to babies or substrings ( crossover )
+	// inherit to babies or offsprings ( crossover )
 	public  Population(Dot dad) {
 		
 	}
