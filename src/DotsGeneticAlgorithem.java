@@ -35,7 +35,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 	private MazeGenerator mg;
 	private Population pop;
 	private int framerate;
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -49,7 +49,6 @@ public class DotsGeneticAlgorithem extends JFrame {
 		});
 	}
 
-	
 	public DotsGeneticAlgorithem() {
 		mg = new MazeGenerator();
 		framerate = 60;
@@ -58,7 +57,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		setType(Type.UTILITY);
 		setTitle("Amazy Mazy");
 		setResizable(false);
-		setBounds(100, 100 , 1000 ,700);
+		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,57 +69,56 @@ public class DotsGeneticAlgorithem extends JFrame {
 		samplesnum.setBounds(815, 610, 66, 35);
 		contentPane.add(samplesnum);
 		samplesnum.setColumns(3);
-		samplesnum.getDocument().addDocumentListener( new DocumentListener() {
-			
+		samplesnum.getDocument().addDocumentListener(new DocumentListener() {
+
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				chkdigit(e);
 			}
-			
+
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
 				chkdigit(e);
 			}
-			
+
 			@Override
 			public void changedUpdate(DocumentEvent e) {
 				chkdigit(e);
 			}
-			
-			public void chkdigit(DocumentEvent e){
-				JTextField tf = (JTextField)  ((EventObject) e).getSource();
-				int x= 0;
+
+			public void chkdigit(DocumentEvent e) {
+				JTextField tf = (JTextField) ((EventObject) e).getSource();
+				int x = 0;
 				try {
-				x = Integer.parseInt(tf.getText());
-				}catch(Exception notInt) {
+					x = Integer.parseInt(tf.getText());
+				} catch (Exception notInt) {
 					tf.setText(DotsGeneticAlgorithem.lastint.toString());
 				}
-				DotsGeneticAlgorithem.lastint = x ;
+				DotsGeneticAlgorithem.lastint = x;
 			}
-		}
-		);
-		
+		});
+
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Auto next generation");
 		chckbxNewCheckBox.setBackground(SystemColor.info);
 		chckbxNewCheckBox.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 12));
 		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxNewCheckBox.setBounds(740, 339, 199, 23);
 		contentPane.add(chckbxNewCheckBox);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.info);
 		panel_1.setBounds(740, 108, 199, 117);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
-		
+
 		JLabel gen = new JLabel("Generation :");
 		gen.setBounds(0, 11, 199, 58);
 		gen.setHorizontalAlignment(SwingConstants.CENTER);
 		gen.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 28));
 		gen.setBackground(Color.BLACK);
 		panel_1.add(gen);
-		
+
 		gencount = new JTextField();
 		gencount.setBackground(SystemColor.info);
 		gencount.setFont(new Font("Segoe Print", Font.PLAIN, 15));
@@ -128,7 +126,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		gencount.setColumns(4);
 		gencount.setBounds(13, 70, 176, 36);
 		panel_1.add(gencount);
-		
+
 		JButton btnNewButton_1 = new JButton("Reset Maze");
 		btnNewButton_1.setBackground(new Color(245, 222, 179));
 		btnNewButton_1.setForeground(SystemColor.infoText);
@@ -139,14 +137,14 @@ public class DotsGeneticAlgorithem extends JFrame {
 		});
 		btnNewButton_1.setBounds(740, 564, 199, 35);
 		contentPane.add(btnNewButton_1);
-		
+
 		JPanel panel = new JPanel();
 		panel.setToolTipText("samples count");
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
 		panel.setBounds(30, 25, 640, 620);
 		contentPane.add(panel);
-		
+
 		JButton btnNewButton = new JButton("Next generation");
 		btnNewButton.setBackground(SystemColor.info);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -155,32 +153,23 @@ public class DotsGeneticAlgorithem extends JFrame {
 		});
 		btnNewButton.setBounds(740, 272, 199, 35);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel background = new JLabel("New label");
 		background.setBackground(new Color(240, 240, 240));
 		background.setIcon(new ImageIcon(DotsGeneticAlgorithem.class.getResource("/imgs/mazebackground.jpg")));
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
 	}
-	
-	
-	
-	
-	
-	
-	// regenerate new maze + new population with the number of samples that given in samplesnum JTextField
+
+	// regenerate new maze + new population with the number of samples that given in
+	// samplesnum JTextField
 	private void ResetALL() {
 		pop = new Population(Integer.parseInt(samplesnum.getText()));
 	}
-	
-	
-	// this function should generate the new generation 
+
+	// this function should generate the new generation
 	private void newGeneration() {
-		
+
 	}
-	
-	
-	
-	
-	
+
 }
