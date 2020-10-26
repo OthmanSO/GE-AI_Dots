@@ -34,12 +34,12 @@ public class Dot {
 	public void mutate() {
 
 		double mutationRate = 0.01;// chance that any vector in directions gets changed
-		for (int i = 0; i < direction_set.size(); i++) {
+		for (Integer dir : direction_set) {
 			Random random = new Random();
 			float rand = random.nextInt(1);
 			if (rand < mutationRate) {
 				// set this direction as a random direction
-				float randomAngle = random.nextInt(4);
+				dir= random.nextInt(4);
 			}
 		}
 
