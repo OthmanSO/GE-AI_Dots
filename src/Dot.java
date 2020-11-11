@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Dot {
-	int[] position = { 5, 5 };
+	int[] position = { 0, 0 };
 	int max_steps;
 	ArrayList<Integer> direction_set;
 	int steps;
@@ -39,9 +39,15 @@ public class Dot {
 			float rand = random.nextInt(1);
 			if (rand < mutationRate) {
 				// set this direction as a random direction
-				dir= random.nextInt(4);
+				dir = random.nextInt(4);
 			}
 		}
+
+	}
+
+	// next move add the movement to the next position
+	// up down right left
+	public void nextMove() {
 
 	}
 
