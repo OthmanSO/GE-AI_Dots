@@ -59,6 +59,11 @@ for (int i = 0; i<Dots_population.length; i++) {
 	// mutation function that iterates on all dots in the population and delegate it
 	// to the mutation in dot class
 	public void mutation() {
+		for (int i = 0; i<Dots_population.length; i++) {
+			
+			Dots_population[i].mutate();
+		}
+		
 
 	}
 	
