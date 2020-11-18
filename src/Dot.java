@@ -13,7 +13,7 @@ public class Dot {
 		dead = false;
 		reach = false;
 		steps = 0;
-		
+
 		max_steps = 1000;
 		direction_set = new ArrayList<Integer>();
 		for (int i = 0; i < max_steps; i++) {
