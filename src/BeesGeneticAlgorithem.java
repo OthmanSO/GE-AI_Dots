@@ -26,7 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 
-public class DotsGeneticAlgorithem extends JFrame {
+public class BeesGeneticAlgorithem extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField gencount;
@@ -40,7 +40,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DotsGeneticAlgorithem frame = new DotsGeneticAlgorithem();
+					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 		});
 	}
 
-	public DotsGeneticAlgorithem() {
+	public BeesGeneticAlgorithem() {
 		mg = new MazeGenerator();
 		framerate = 60;
 		pop = new Population(50);
@@ -93,9 +93,9 @@ public class DotsGeneticAlgorithem extends JFrame {
 				try {
 					x = Integer.parseInt(tf.getText());
 				} catch (Exception notInt) {
-					tf.setText(DotsGeneticAlgorithem.lastint.toString());
+					tf.setText(BeesGeneticAlgorithem.lastint.toString());
 				}
-				DotsGeneticAlgorithem.lastint = x;
+				BeesGeneticAlgorithem.lastint = x;
 			}
 		});
 
@@ -156,7 +156,7 @@ public class DotsGeneticAlgorithem extends JFrame {
 
 		JLabel background = new JLabel("New label");
 		background.setBackground(new Color(240, 240, 240));
-		background.setIcon(new ImageIcon(DotsGeneticAlgorithem.class.getResource("/imgs/mazebackground.jpg")));
+		background.setIcon(new ImageIcon(BeesGeneticAlgorithem.class.getResource("/imgs/mazebackground.jpg")));
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
 	}

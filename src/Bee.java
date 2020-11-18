@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Dot {
+public class Bee {
 	int[] position = { 0, 0 };
 	int max_steps;
 	Target target;
@@ -9,7 +9,7 @@ public class Dot {
 	int steps;
 	boolean dead, reach;
 
-	Dot() {
+	Bee() {
 		dead = false;
 		reach = false;
 		steps = 0;
@@ -18,30 +18,26 @@ public class Dot {
 		direction_set = new ArrayList<Integer>();
 		for (int i = 0; i < max_steps; i++) {
 			// up down right left
-if(direction_set.get(steps)==0) {
-	// up 
-	position[1]=position[1]+20;
-}
-else if(direction_set.get(steps)==1) {
-	// down 
-	position[1]=position[1]-20;
-}
-else if(direction_set.get(steps)==2) {
-	//  right 
-	position[0]=position[0]+20;
-}
-else if(direction_set.get(steps)==3) {
-	//  left
-	position[0]=position[0]-20;
-}
-			
-			
+			if (direction_set.get(steps) == 0) {
+				// up
+				position[1] = position[1] + 20;
+			} else if (direction_set.get(steps) == 1) {
+				// down
+				position[1] = position[1] - 20;
+			} else if (direction_set.get(steps) == 2) {
+				// right
+				position[0] = position[0] + 20;
+			} else if (direction_set.get(steps) == 3) {
+				// left
+				position[0] = position[0] - 20;
+			}
+
 		}
 	}
 
 	// called by child and given parent void return//done
 	// crossover
-	public void inheriteFromDad(Dot dad) {
+	public void inheriteFromDad(Bee dad) {
 		this.position = dad.position;
 		this.max_steps = dad.max_steps;
 		for (int dir : dad.direction_set) {
