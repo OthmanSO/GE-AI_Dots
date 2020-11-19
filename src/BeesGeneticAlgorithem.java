@@ -136,6 +136,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	// samplesnum JTextField
 	private void ResetALL() {
 		pop = new Population(Integer.parseInt(samplesnum.getText()));
+		mg.generate();
 	}
 
 	// this function should generate the new generation
