@@ -12,7 +12,7 @@ public class Population {
 		}
 	}
 
-	// inherit to babies or offsprings ( crossover )
+	// inherit to babies or offsprings ( crossover then mutation )
 	// bestBee from the past generation is pushed in the first position of the
 	// next generation to make sure that the system is not falling back and give
 	// worst results
@@ -20,7 +20,7 @@ public class Population {
 	// the past generation and the other 10% are scouts for another routes if found
 	// if no bee reached the target yet then 50% only will mutate from bestBee
 	// others are scouts in case of misleading fitness function
-	public void crosssver() {
+	public void crosssverAndMutation() {
 		myPromisingBaby();
 		double lim;
 		lim = reached ? 0.9 : 0.5;
