@@ -3,7 +3,6 @@ public class Population {
 
 	Bee beesPulation[];
 	Bee bestBeeEver;
-	int indexOFBestBee = 0;
 	public static int MaxStep = 1000;
 
 	public Population(int pop) {
@@ -26,40 +25,21 @@ public class Population {
 	// - if more than one has the same fitness the one that occurs first will be
 	// token -
 	public void myPromisingBaby() {
-		Target target;
-		float max = 0;
-		int maxIndex = 0;
-		for (int i = 0; i < beesPulation.length; i++) {
-
-			if (beesPulation[i].isReached()) {
-
-				if (beesPulation[i].max_steps < MaxStep) {
-					MaxStep = beesPulation[i].max_steps;
-
-					indexOFBestBee = i;
-					bestBeeEver = beesPulation[indexOFBestBee];
-				}
-
-			} // if reach
-
-			else {
-
-				// if (Dots_population[i].fitness > max) {
-				// max = Dots_population[i].fitness;
-				// maxIndex = i;
-				// }
-
-			}
-
-		} // for
-
+		for (Bee b : beesPulation) {
+			if (bestBeeEver.isReached()) {
+				if (b.isReached() && b.steps < bestBeeEver.steps)
+					bestBeeEver = b;
+			} else if (b.isReached())
+				bestBeeEver = b;
+			else if (b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
+				bestBeeEver = b;
+		}
 	}
 
 	// mutation function that iterates on all dots in the population and delegate it
 	// to the mutation in dot class
 	public void mutation() {
 		for (int i = 0; i < beesPulation.length; i++) {
-
 			beesPulation[i].mutate();
 		}
 

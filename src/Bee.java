@@ -24,6 +24,8 @@ public class Bee {
 		}
 	}
 
+	
+
 	// called by child and given parent void return//done
 	// crossover
 	public void inheriteFromDad(Bee dad) {
@@ -82,5 +84,10 @@ public class Bee {
 		else
 			return false;// not yet implemented
 
+	}
+	
+	
+	public int DistanceToTarget() {
+		return	Target.distanceFromTarget(this.position);	
 	}
 }
