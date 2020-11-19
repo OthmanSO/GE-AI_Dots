@@ -69,35 +69,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 		samplesnum.setBounds(815, 610, 66, 35);
 		contentPane.add(samplesnum);
 		samplesnum.setColumns(3);
-		samplesnum.getDocument().addDocumentListener(new DocumentListener() {
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				chkdigit(e);
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				chkdigit(e);
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				chkdigit(e);
-			}
-
-			public void chkdigit(DocumentEvent e) {
-				JTextField tf = (JTextField) ((EventObject) e).getSource();
-				int x = 0;
-				try {
-					x = Integer.parseInt(tf.getText());
-				} catch (Exception notInt) {
-					tf.setText(BeesGeneticAlgorithem.lastint.toString());
-				}
-				BeesGeneticAlgorithem.lastint = x;
-			}
-		});
 
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Auto next generation");
 		chckbxNewCheckBox.setBackground(SystemColor.info);
