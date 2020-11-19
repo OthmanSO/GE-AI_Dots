@@ -113,7 +113,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		panel.setToolTipText("samples count");
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
-		panel.setBounds(30, 20, 640, 640);
+		panel.setBounds(30, 10, 640, 640);
 		contentPane.add(panel);
 
 		JButton btnNewButton = new JButton("Next generation");
