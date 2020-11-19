@@ -13,6 +13,13 @@ public class Population {
 	}
 
 	// inherit to babies or offsprings ( crossover )
+	// bestBee from the past generation is pushed in the first position of the
+	// next generation to make sure that the system is not falling back and give
+	// worst results
+	// If a bee reached then 90% of the population mutate from the bestBee in
+	// the past generation and the other 10% are scouts for another routes if found
+	// if no bee reached the target yet then 50% only will mutate from bestBee
+	// others are scouts in case of misleading fitness function
 	public void crosssver() {
 		myPromisingBaby();
 		double lim;
@@ -20,6 +27,7 @@ public class Population {
 		beesPopulation[0] = bestBeeEver;
 		for (int index = 1; index < (int) beesPopulation.length * lim; index++) {
 			beesPopulation[index].inheriteFromDad(beesPopulation[0]);
+			beesPopulation[index].mutate();
 		}
 		for (int index = (int) (beesPopulation.length * lim); index < beesPopulation.length; index++) {
 			beesPopulation[index] = new Bee();
