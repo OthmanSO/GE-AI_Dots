@@ -1,19 +1,29 @@
 
 public class Population {
 
-	Bee beesPulation[];
+	Bee beesPopulation[];
 	Bee bestBeeEver;
-	public static int MaxStep = 1000;
+	public static boolean reached;
 
 	public Population(int pop) {
-		beesPulation = new Bee[pop];
-		for (int i = 0; i < beesPulation.length; i++) {
-			beesPulation[i] = new Bee();
+		beesPopulation = new Bee[pop];
+		for (int i = 0; i < beesPopulation.length; i++) {
+			beesPopulation[i] = new Bee();
 		}
 	}
 
 	// inherit to babies or offsprings ( crossover )
-	public Population() {
+	public void crosssver() {
+		myPromisingBaby();
+		double lim;
+		lim = reached ? 0.9 : 0.5;
+		beesPopulation[0] = bestBeeEver;
+		for (int index = 1; index < (int) beesPopulation.length * lim; index++) {
+			beesPopulation[index].inheriteFromDad(beesPopulation[0]);
+		}
+		for (int index = (int) (beesPopulation.length * lim); index < beesPopulation.length; index++) {
+			beesPopulation[index] = new Bee();
+		}
 
 	}
 
@@ -25,10 +35,11 @@ public class Population {
 	// - if more than one has the same fitness the one that occurs first will be
 	// token -
 	public void myPromisingBaby() {
-		for (Bee b : beesPulation) {
+		for (Bee b : beesPopulation) {
 			if (bestBeeEver.isReached()) {
 				if (b.isReached() && b.steps < bestBeeEver.steps)
 					bestBeeEver = b;
+				reached = true;
 			} else if (b.isReached())
 				bestBeeEver = b;
 			else if (b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
@@ -39,15 +50,15 @@ public class Population {
 	// mutation function that iterates on all dots in the population and delegate it
 	// to the mutation in dot class
 	public void mutation() {
-		for (int i = 0; i < beesPulation.length; i++) {
-			beesPulation[i].mutate();
+		for (int i = 0; i < beesPopulation.length; i++) {
+			beesPopulation[i].mutate();
 		}
 
 	}
 
 	boolean allDead() {
-		for (int i = 0; i < beesPulation.length; i++) {
-			if (!beesPulation[i].isDead() && !beesPulation[i].isReached()) {
+		for (int i = 0; i < beesPopulation.length; i++) {
+			if (!beesPopulation[i].isDead() && !beesPopulation[i].isReached()) {
 				return false;
 			}
 		}
