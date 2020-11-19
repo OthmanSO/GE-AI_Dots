@@ -50,7 +50,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	}
 
 	public BeesGeneticAlgorithem() {
-		mg = new MazeGenerator();
+		mg = MazeGenerator.singletonMazeGenerator();
 		framerate = 60;
 		pop = new Population(50);
 		lastint = 50;
@@ -142,7 +142,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		panel.setToolTipText("samples count");
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(139, 69, 19));
-		panel.setBounds(30, 25, 640, 620);
+		panel.setBounds(30, 20, 640, 640);
 		contentPane.add(panel);
 
 		JButton btnNewButton = new JButton("Next generation");

@@ -8,8 +8,10 @@ public class Bee {
 	ArrayList<Integer> direction_set;
 	int steps;
 	boolean dead, reach;
+	MazeGenerator maze;
 
 	Bee() {
+		maze = MazeGenerator.singletonMazeGenerator();
 		dead = false;
 		reach = false;
 		steps = 0;
@@ -18,20 +20,7 @@ public class Bee {
 		direction_set = new ArrayList<Integer>();
 		for (int i = 0; i < max_steps; i++) {
 			// up down right left
-			if (direction_set.get(steps) == 0) {
-				// up
-				position[1] = position[1] + 20;
-			} else if (direction_set.get(steps) == 1) {
-				// down
-				position[1] = position[1] - 20;
-			} else if (direction_set.get(steps) == 2) {
-				// right
-				position[0] = position[0] + 20;
-			} else if (direction_set.get(steps) == 3) {
-				// left
-				position[0] = position[0] - 20;
-			}
-
+			direction_set.add((int)Math.random()*4);
 		}
 	}
 
@@ -63,7 +52,19 @@ public class Bee {
 	// next move add the movement to the next position
 	// up down right left
 	public void nextMove() {
-
+		if (direction_set.get(steps) == 0) {
+			// up
+			position[1] = position[1] + 1;
+		} else if (direction_set.get(steps) == 1) {
+			// down
+			position[1] = position[1] - 1;
+		} else if (direction_set.get(steps) == 2) {
+			// right
+			position[0] = position[0] + 1;
+		} else if (direction_set.get(steps) == 3) {
+			// left
+			position[0] = position[0] - 1;
+		}
 	}
 
 	public boolean isDead() {
@@ -71,8 +72,7 @@ public class Bee {
 		if (dead)
 			return true;
 		else
-			return false;// not yet implemented
-
+			return maze.isDeadByMaze(position);
 	}
 
 	public boolean isReached() {
