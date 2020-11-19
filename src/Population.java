@@ -13,7 +13,7 @@ public class Population {
 	}
 
 	// inherit to babies or offsprings ( crossover )
-	public Population(Bee dad) {
+	public Population() {
 
 	}
 
