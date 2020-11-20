@@ -4,10 +4,12 @@ public class Population {
 	Bee beesPopulation[];
 	Bee bestBeeEver;
 	public static boolean reached;
+	int popCount;
 
 	public Population(int pop) {
+		popCount = pop;
 		beesPopulation = new Bee[pop];
-		for (int i = 0; i < beesPopulation.length; i++) {
+		for (int i = 0; i < popCount; i++) {
 			beesPopulation[i] = new Bee();
 		}
 	}
@@ -25,11 +27,11 @@ public class Population {
 		double lim;
 		lim = reached ? 0.9 : 0.5;
 		beesPopulation[0] = bestBeeEver;
-		for (int index = 1; index < (int) beesPopulation.length * lim; index++) {
+		for (int index = 1; index < (int) popCount * lim; index++) {
 			beesPopulation[index].inheriteFromDad(beesPopulation[0]);
 			beesPopulation[index].mutate();
 		}
-		for (int index = (int) (beesPopulation.length * lim); index < beesPopulation.length; index++) {
+		for (int index = (int) (popCount * lim); index < popCount; index++) {
 			beesPopulation[index] = new Bee();
 		}
 
@@ -43,6 +45,8 @@ public class Population {
 	// - if more than one has the same fitness the one that occurs first will be
 	// token -
 	public void myPromisingBaby() {
+		if (bestBeeEver == null)
+			bestBeeEver = beesPopulation[0];
 		for (Bee b : beesPopulation) {
 			if (bestBeeEver.isReached()) {
 				if (b.isReached() && b.steps < bestBeeEver.steps)
@@ -55,23 +59,18 @@ public class Population {
 		}
 	}
 
-	// mutation function that iterates on all dots in the population and delegate it
-	// to the mutation in dot class
-	public void mutation() {
-		for (int i = 0; i < beesPopulation.length; i++) {
-			beesPopulation[i].mutate();
-		}
-
+	boolean allDead() {
+		for (int i = 0; i < popCount; i++)
+			if (!beesPopulation[i].isDead() && !beesPopulation[i].isReached())
+				return false;
+		return true;
 	}
 
-	boolean allDead() {
-		for (int i = 0; i < beesPopulation.length; i++) {
-			if (!beesPopulation[i].isDead() && !beesPopulation[i].isReached()) {
-				return false;
-			}
-		}
-
-		return true;
+	public int[][] GetAllPos() {
+		int[][] posArray = new int[popCount][];
+		for (int i = 0; i < popCount; i++)
+			posArray[i] = beesPopulation[i].position;
+		return posArray;
 	}
 
 }
