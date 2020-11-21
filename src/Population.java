@@ -65,13 +65,6 @@ public class Population {
 		return true;
 	}
 
-	public int[][] GetAllPos() {
-		int[][] posArray = new int[popCount][];
-		for (int i = 0; i < popCount; i++)
-			posArray[i] = beesPopulation[i].position;
-		return posArray;
-	}
-
 	public void updateNextMove() {
 		for (Bee b : beesPopulation)
 			if (!b.isDead())
