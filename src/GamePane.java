@@ -21,18 +21,13 @@ class GamePane extends JPanel implements ActionListener {
 	}
 
 	private void doDrawing(Graphics g) {
-
 		Graphics2D g2d = (Graphics2D) g;
-
 		g2d.setPaint(Color.GREEN);
-
 		Random r = new Random();
-
 		for (int row = 0; row < 31; row++)
 			for (int col = 0; col < 31; col++)
 				if (mg.maze[row][col])
 					g2d.drawRect(row, col, 20, 20);
-
 		drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
 
 	}
