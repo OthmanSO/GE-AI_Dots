@@ -62,12 +62,8 @@ public class MazeGenerator {
 	
 	void tearDown(int row, int col) {
         // Tear down a wall, unless doing so will form a loop.  Tearing down a wall
-        // joins two "rooms" into one "room".  (Rooms begin to look like corridors
-        // as they grow.)  When a wall is torn down, the room codes on one side are
-        // converted to match those on the other side, so all the cells in a room
-        // have the same code.  Note that if the room codes on both sides of a
-        // wall already have the same code, then tearing down that wall would 
-        // create a loop, so the wall is left in place.
+        // joins two "rooms" into one "room".  (Rooms begin to look like path 
+  
     if (row % 2 == 1 && maze[row][col-1] != maze[row][col+1]) {
         // row is odd; wall separates rooms horizontally
         maze[row][col] = maze[row][col+1];
