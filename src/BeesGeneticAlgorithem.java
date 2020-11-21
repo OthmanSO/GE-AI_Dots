@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -18,7 +17,6 @@ import java.awt.event.MouseEvent;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.Toolkit;
 
 public class BeesGeneticAlgorithem extends JFrame {
@@ -151,15 +149,17 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 	private void thisGeneration() {
 		NewGenBtn.disable();
-		while (!pop.allDead()) {
+		pop.runAll();
+		pop.myPromisingBaby();
+		for (int step = 0; step < Population.bestBeeEver.steps; step++) {
 			try {
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
+				System.out.println("framerat has a problem");
 			}
-
 			gamePane.repaint();
-			NewGenBtn.enable();
-			pop.updateNextMove();
+
 		}
+		NewGenBtn.enable();
 	}
 }
