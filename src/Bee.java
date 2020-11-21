@@ -46,6 +46,7 @@ public class Bee {
 			if (rand < mutationRate) {
 				// set this direction as a random direction
 				dir = random.nextInt(4);
+				System.out.println(dir);
 			}
 		}
 	}
@@ -54,16 +55,18 @@ public class Bee {
 	// up down right left
 	public void nextMove() {
 		steps += 1;
-		if (direction_set.get(steps) == 0) {
+		int dir = direction_set.get(steps);
+		System.out.println(dir);
+		if (dir == 0) {
 			// up
 			position[1] = position[1] + 1;
-		} else if (direction_set.get(steps) == 1) {
+		} else if (dir == 1) {
 			// down
 			position[1] = position[1] - 1;
-		} else if (direction_set.get(steps) == 2) {
+		} else if (dir == 2) {
 			// right
 			position[0] = position[0] + 1;
-		} else if (direction_set.get(steps) == 3) {
+		} else if (dir == 3) {
 			// left
 			position[0] = position[0] - 1;
 		}

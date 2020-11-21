@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -28,7 +30,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private MazeGenerator mg;
 	private Population pop;
 	private int framerate;
-	JPanel gamePanel;
+	GamePane gamePane;
 	JButton NewGenBtn;
 
 	public static void main(String[] args) {
@@ -101,12 +103,12 @@ public class BeesGeneticAlgorithem extends JFrame {
 		btnNewButton_1.setBounds(740, 564, 199, 35);
 		contentPane.add(btnNewButton_1);
 
-		gamePanel = new JPanel();
-		gamePanel.setToolTipText("samples count");
-		gamePanel.setBackground(new Color(139, 69, 19));
-		gamePanel.setBounds(30, 10, 640, 640);
-		contentPane.add(gamePanel);
-		gamePanel.setLayout(null);
+		gamePane = new GamePane();
+		gamePane.setToolTipText("samples count");
+		gamePane.setBackground(new Color(139, 69, 19));
+		gamePane.setBounds(30, 10, 640, 640);
+		contentPane.add(gamePane);
+		gamePane.setLayout(null);
 
 		NewGenBtn = new JButton("Next generation");
 		NewGenBtn.setBackground(SystemColor.info);
@@ -141,20 +143,15 @@ public class BeesGeneticAlgorithem extends JFrame {
 		} catch (Exception e) {
 			return;
 		}
+		gencount.setText("1");
 		pop = new Population(x);
 		mg.generate();
 	}
 
 	// this function should generate the new generation
 	private void newGeneration() {
-
 		pop.crosssverAndMutation();
 		thisGeneration();
-		try {
-			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e) {
-		}
-		NewGenBtn.enable();
 	}
 
 	private void thisGeneration() {
@@ -165,15 +162,20 @@ public class BeesGeneticAlgorithem extends JFrame {
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
 			}
-			for (int r = 0; r < 32; r++)
-				for (int c = 0; c < 32; c++)
-					if (mg.maze[r][c]) {
-						System.out.println("123");
-					}
+			/*
+			 * for (int r = 0; r < 32; r++) for (int c = 0; c < 32; c++) if (mg.maze[r][c])
+			 * { System.out.println("123"); }
+			 */
+			int x, y;
 			int[][] beesPos = pop.GetAllPos();
 			for (int i = 0; i < pop.popCount; i++) {
-				System.out.println(beesPos[i][0]+","+beesPos[i][1]+"\n");
+				System.out.println("hi");
 			}
+			try {
+				TimeUnit.SECONDS.sleep(3);
+			} catch (InterruptedException e) {
+			}
+			NewGenBtn.enable();
 			pop.updateNextMove();
 			gamePanel.repaint();
 			gamePanel.validate();
