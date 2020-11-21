@@ -153,7 +153,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		NewGenBtn.disable();
 		pop.runAll();
 		pop.myPromisingBaby();
-		for (int step = 0; step < pop.bestBeeEver.steps; step++) {
+		for (int step = 0; step < Population.bestBeeEver.steps; step++) {
 			try {
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
