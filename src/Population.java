@@ -73,4 +73,10 @@ public class Population {
 		return posArray;
 	}
 
+	public void updateNextMove() {
+		for (Bee b : beesPopulation)
+			if(!b.isDead())
+				b.nextMove();
+	}
+
 }

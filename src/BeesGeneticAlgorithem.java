@@ -1,37 +1,23 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import java.awt.Color;
-import javax.swing.JDesktopPane;
-import java.awt.Window.Type;
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
-import java.awt.event.InputMethodListener;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.EventObject;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.JCheckBox;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.Toolkit;
 
 public class BeesGeneticAlgorithem extends JFrame {
 
@@ -42,7 +28,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private MazeGenerator mg;
 	private Population pop;
 	private int framerate;
-	JCheckBox chckbxNewCheckBox;
 	JPanel gamePanel;
 	JButton NewGenBtn;
 
@@ -60,14 +45,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 	}
 
 	public BeesGeneticAlgorithem() {
-		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mg = MazeGenerator.singletonMazeGenerator();
 		framerate = 60;
 		pop = new Population(50);
 		lastint = 50;
-		setType(Type.UTILITY);
 		setTitle("Amazy Mazy");
-		setResizable(false);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -80,13 +65,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 		samplesnum.setBounds(815, 610, 66, 35);
 		contentPane.add(samplesnum);
 		samplesnum.setColumns(3);
-
-		chckbxNewCheckBox = new JCheckBox("Auto next generation");
-		chckbxNewCheckBox.setBackground(SystemColor.info);
-		chckbxNewCheckBox.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 12));
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxNewCheckBox.setBounds(740, 339, 199, 23);
-		contentPane.add(chckbxNewCheckBox);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.info);
@@ -103,7 +81,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 		gencount = new JTextField();
 		gencount.setHorizontalAlignment(SwingConstants.CENTER);
-		gencount.setText("0");
+		gencount.setText("1");
 		gencount.setBackground(SystemColor.info);
 		gencount.setFont(new Font("Segoe Print", Font.PLAIN, 15));
 		gencount.setEditable(false);
@@ -132,11 +110,18 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 		NewGenBtn = new JButton("Next generation");
 		NewGenBtn.setBackground(SystemColor.info);
-		NewGenBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		NewGenBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("lol");
 				newGeneration();
+				System.out.println("lol");
+				Integer tmp;
+				tmp = Integer.parseInt(gencount.getText()) + 1;
+				gencount.setText(tmp.toString());
 			}
 		});
+
 		NewGenBtn.setBounds(740, 272, 199, 35);
 		contentPane.add(NewGenBtn);
 
@@ -162,40 +147,34 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 	// this function should generate the new generation
 	private void newGeneration() {
-		Integer tmp;
-		do {
-			tmp = Integer.parseInt(gencount.getText()) + 1;
-			gencount.setText(tmp.toString());
-			pop.crosssverAndMutation();
-			thisGeneration();
-			try {
-				TimeUnit.SECONDS.sleep(3);
-			} catch (InterruptedException e) {
-			}
-		} while (chckbxNewCheckBox.isSelected());
+
+		pop.crosssverAndMutation();
+		thisGeneration();
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+		}
 		NewGenBtn.enable();
 	}
 
 	private void thisGeneration() {
 		NewGenBtn.disable();
-		ImageIcon image = new ImageIcon(BeesGeneticAlgorithem.class.getResource("/imgs/groundBlock.png"));
 		while (!pop.allDead()) {
+			try {
+
+				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
+			} catch (InterruptedException e) {
+			}
 			for (int r = 0; r < 32; r++)
 				for (int c = 0; c < 32; c++)
 					if (mg.maze[r][c]) {
-						JLabel l = new JLabel();
-
-						l.setLocation(r * 20, c * 20);
-						gamePanel.add(l);
+						System.out.println("123");
 					}
-			image = new ImageIcon(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png"));
 			int[][] beesPos = pop.GetAllPos();
-			for (int[] pos : beesPos) {
-				JLabel l = new JLabel();
-				l.setIcon(image);
-				l.setLocation(pos[0] * 20, pos[1] * 20);
-				gamePanel.add(l);
+			for (int i = 0; i < pop.popCount; i++) {
+				System.out.println(beesPos[i][0]+","+beesPos[i][1]+"\n");
 			}
+			pop.updateNextMove();
 			gamePanel.repaint();
 			gamePanel.validate();
 
