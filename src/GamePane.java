@@ -35,6 +35,8 @@ class GamePane extends JPanel implements ActionListener {
 				if(mg.maze[row][col])
 					g2d.drawRect(row, col, 20, 20);
 		
+		drawBee(g2d, Population.bestBeeEver.position[0], Population.bestBeeEver.position[1]);
+		
 	}
 		
 	

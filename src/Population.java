@@ -2,7 +2,7 @@
 public class Population {
 
 	Bee beesPopulation[];
-	Bee bestBeeEver;
+	static Bee bestBeeEver;
 	public static boolean reached;
 	int popCount;
 

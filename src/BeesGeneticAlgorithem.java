@@ -150,7 +150,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	}
 
 	private void thisGeneration() {
-		NewGenBtn.disable();	
+		NewGenBtn.disable();
 		pop.runAll();
 		pop.myPromisingBaby();
 		for (int step = 0; step < pop.bestBeeEver.steps; step++) {
@@ -160,6 +160,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 				System.out.println("framerat has a problem");
 			}
 			gamePane.repaint();
+
 		}
 		NewGenBtn.enable();
 	}
