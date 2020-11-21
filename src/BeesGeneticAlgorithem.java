@@ -104,20 +104,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		gamePane = new GamePane();
-		gamePane.setToolTipText("samples count");
-		gamePane.setBackground(new Color(139, 69, 19));
-		gamePane.setBounds(30, 10, 640, 640);
 		contentPane.add(gamePane);
-		gamePane.setLayout(null);
 
 		NewGenBtn = new JButton("Next generation");
 		NewGenBtn.setBackground(SystemColor.info);
 		NewGenBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("lol");
 				newGeneration();
-				System.out.println("lol");
 				Integer tmp;
 				tmp = Integer.parseInt(gencount.getText()) + 1;
 				gencount.setText(tmp.toString());
@@ -141,7 +135,8 @@ public class BeesGeneticAlgorithem extends JFrame {
 		try {
 			x = Integer.parseInt(samplesnum.getText());
 		} catch (Exception e) {
-			return;
+			x = 50;
+			System.out.println("not Acceptable!, U should enter a number . Defult samples set to 50 :)");
 		}
 		gencount.setText("1");
 		pop = new Population(x);
@@ -158,26 +153,11 @@ public class BeesGeneticAlgorithem extends JFrame {
 		NewGenBtn.disable();
 		while (!pop.allDead()) {
 			try {
-
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
 			}
 
-			for (int r = 0; r < 32; r++)
-				for (int c = 0; c < 32; c++)
-					if (mg.maze[r][c]) {
-						System.out.println("123");
-					}
-
-			int x, y;
-			int[][] beesPos = pop.GetAllPos();
-			for (int i = 0; i < pop.popCount; i++) {
-				System.out.println("hi");
-			}
-			try {
-				TimeUnit.SECONDS.sleep(3);
-			} catch (InterruptedException e) {
-			}
+			gamePane.repaint();
 			NewGenBtn.enable();
 			pop.updateNextMove();
 		}

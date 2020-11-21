@@ -1,6 +1,6 @@
 
 public class Population {
-
+	
 	Bee beesPopulation[];
 	Bee bestBeeEver;
 	public static boolean reached;
