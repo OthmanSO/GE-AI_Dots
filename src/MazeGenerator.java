@@ -6,7 +6,6 @@ public class MazeGenerator {
 
 	private MazeGenerator() {
 		maze = new boolean[32][32];
-		for ( int r)
 	}
 
 	public static MazeGenerator singletonMazeGenerator() {
