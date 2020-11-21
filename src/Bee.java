@@ -56,13 +56,12 @@ public class Bee {
 	public void nextMove() {
 		steps += 1;
 		int dir = direction_set.get(steps);
-		System.out.println(dir);
 		if (dir == 0) {
 			// up
-			position[1] = position[1] + 1;
+			position[1] = position[1] - 1;
 		} else if (dir == 1) {
 			// down
-			position[1] = position[1] - 1;
+			position[1] = position[1] + 1;
 		} else if (dir == 2) {
 			// right
 			position[0] = position[0] + 1;

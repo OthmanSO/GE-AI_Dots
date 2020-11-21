@@ -162,10 +162,13 @@ public class BeesGeneticAlgorithem extends JFrame {
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
 			}
-			/*
-			 * for (int r = 0; r < 32; r++) for (int c = 0; c < 32; c++) if (mg.maze[r][c])
-			 * { System.out.println("123"); }
-			 */
+
+			for (int r = 0; r < 32; r++)
+				for (int c = 0; c < 32; c++)
+					if (mg.maze[r][c]) {
+						System.out.println("123");
+					}
+
 			int x, y;
 			int[][] beesPos = pop.GetAllPos();
 			for (int i = 0; i < pop.popCount; i++) {
@@ -177,9 +180,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 			}
 			NewGenBtn.enable();
 			pop.updateNextMove();
-			gamePanel.repaint();
-			gamePanel.validate();
-
 		}
 	}
 }
