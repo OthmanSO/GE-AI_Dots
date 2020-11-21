@@ -150,16 +150,17 @@ public class BeesGeneticAlgorithem extends JFrame {
 	}
 
 	private void thisGeneration() {
-		NewGenBtn.disable();
-		while (!pop.allDead()) {
+		NewGenBtn.disable();	
+		pop.runAll();
+		pop.myPromisingBaby();
+		for (int step = 0; step < pop.bestBeeEver.steps; step++) {
 			try {
 				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
+				System.out.println("framerat has a problem");
 			}
-
 			gamePane.repaint();
-			NewGenBtn.enable();
-			pop.updateNextMove();
 		}
+		NewGenBtn.enable();
 	}
 }

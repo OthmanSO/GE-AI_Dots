@@ -1,6 +1,6 @@
 
 public class Population {
-	
+
 	Bee beesPopulation[];
 	Bee bestBeeEver;
 	public static boolean reached;
@@ -23,7 +23,6 @@ public class Population {
 	// if no bee reached the target yet then 50% only will mutate from bestBee
 	// others are scouts in case of misleading fitness function
 	public void crosssverAndMutation() {
-		myPromisingBaby();
 		double lim;
 		lim = reached ? 0.9 : 0.5;
 		beesPopulation[0] = bestBeeEver;
@@ -75,8 +74,14 @@ public class Population {
 
 	public void updateNextMove() {
 		for (Bee b : beesPopulation)
-			if(!b.isDead())
+			if (!b.isDead())
 				b.nextMove();
+	}
+
+	public void runAll() {
+		while (!allDead()) {
+			updateNextMove();
+		}
 	}
 
 }
