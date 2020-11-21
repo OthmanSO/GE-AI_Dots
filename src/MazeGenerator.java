@@ -1,5 +1,3 @@
-import org.graalvm.compiler.hotspot.stubs.OutOfBoundsExceptionStub;
-import org.graalvm.compiler.nodes.java.ExceptionObjectNode;
 
 public class MazeGenerator {
 
