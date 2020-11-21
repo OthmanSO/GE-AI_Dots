@@ -28,6 +28,8 @@ public class Bee {
 	// crossover
 	public void inheriteFromDad(Bee dad) {
 		this.steps = 0;
+		dead = false;
+		reach=false;
 		this.position = dad.position;
 		this.max_steps = dad.max_steps;
 		direction_set.clear();
@@ -73,8 +75,7 @@ public class Bee {
 
 	public boolean isDead() {
 
-		dead = (dead || position[0] > 31 || position[1] > 31 || position[0] > 31 || position[1] > 31
-				|| maze.isDeadByMaze(position));
+		dead = (dead || maze.isDeadByMaze(position));
 		return dead;
 	}
 
