@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -18,7 +17,6 @@ import java.awt.event.MouseEvent;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.Toolkit;
 
 public class BeesGeneticAlgorithem extends JFrame {

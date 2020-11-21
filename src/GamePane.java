@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 class GamePane extends JPanel implements ActionListener {
 
 	MazeGenerator mg;
-	
 
 	public GamePane() {
 		mg = MazeGenerator.singletonMazeGenerator();
@@ -21,7 +20,6 @@ class GamePane extends JPanel implements ActionListener {
 		setLayout(null);
 	}
 
-
 	private void doDrawing(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
@@ -31,16 +29,15 @@ class GamePane extends JPanel implements ActionListener {
 		Random r = new Random();
 
 		for (int row = 0; row < 31; row++)
-			for (int col = 0; col < 31; col++) 
-				if(mg.maze[row][col])
+			for (int col = 0; col < 31; col++)
+				if (mg.maze[row][col])
 					g2d.drawRect(row, col, 20, 20);
-		
-		drawBee(g2d, Population.bestBeeEver.position[0], Population.bestBeeEver.position[1]);
-		
+
+		drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
+
 	}
-		
-	
-	private void drawBee(Graphics2D g2d , int x , int y){
+
+	private void drawBee(Graphics2D g2d, int x, int y) {
 		g2d.setPaint(Color.yellow);
 		g2d.drawLine(x + 4, y, x + 5, y + 1);
 		g2d.drawLine(x + 1, y + 3, x + 8, y + 3);
