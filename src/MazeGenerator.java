@@ -100,19 +100,22 @@ void tearDown(int row, int col) {
         
        
     }
+    setMaze();
 }
 //----------------------------------------------------
 	
-	
-	
- public void printMaz()	{
-	 for(int i =0;i<32;i++) {
+public void setMaze() {
+	for(int i =0;i<32;i++) {
 		   for(int j =0;j<32;j++) {
 			   
 			   
 			   if (maz[i][j]==0){   maze[i][j]=false;}
 			   else maze[i][j]=true;
 		   }}
+}	
+	
+ public void printMaz()	{
+	 setMaze();
 	   for(int i =0;i<32;i++) {
 		   for(int j =0;j<32;j++) {
 			   if (j==0) {System.out.print("\n");}
