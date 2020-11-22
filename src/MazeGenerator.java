@@ -22,7 +22,7 @@ public class MazeGenerator {
 		maze[0][0] = true;
 		maze[0][1] = true;
 		maze[31][31] = true;
-		
+
 	}
 
 	public static MazeGenerator singletonMazeGenerator() {
@@ -132,7 +132,7 @@ public class MazeGenerator {
 	}
 
 	public boolean isDeadByMaze(int[] position) {
-			return isAWall(position[0],position[1]);		
+		return isAWall(position[0], position[1]);
 	}
 
 }
