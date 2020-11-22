@@ -8,10 +8,8 @@ public class Bee {
 	ArrayList<Integer> direction_set;
 	int steps;
 	boolean dead, reach;
-	MazeGenerator maze;
 
 	Bee() {
-		maze = MazeGenerator.singletonMazeGenerator();
 		dead = false;
 		reach = false;
 		steps = 0;
@@ -29,7 +27,7 @@ public class Bee {
 	public void inheriteFromDad(Bee dad) {
 		this.steps = 0;
 		dead = false;
-		reach=false;
+		reach = false;
 		this.position = dad.position;
 		this.max_steps = dad.max_steps;
 		direction_set.clear();
@@ -75,7 +73,7 @@ public class Bee {
 
 	public boolean isDead() {
 
-		dead = (dead || maze.isDeadByMaze(position));
+		dead = (dead || MazeGenerator.isDeadByMaze(position));
 		return dead;
 	}
 

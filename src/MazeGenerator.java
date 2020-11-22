@@ -118,7 +118,7 @@ public class MazeGenerator {
 		}
 	}
 
-	public boolean isDeadByMaze(int[] position) {
+	public static boolean isDeadByMaze(int[] position) {
 		return isAWall(position[0], position[1]);
 	}
 
