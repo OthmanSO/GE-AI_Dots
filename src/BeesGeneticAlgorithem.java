@@ -139,6 +139,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		gencount.setText("1");
 		pop = new Population(x);
 		mg.generate();
+		gamePane.repaint();
 	}
 
 	// this function should generate the new generation
