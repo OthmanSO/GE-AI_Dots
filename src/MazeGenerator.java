@@ -10,7 +10,7 @@ public class MazeGenerator {
 	final static int wallCode = 0;
 	final static int pathCode = 1;
 
-	private MazeGenerator() {
+	public MazeGenerator() {
 		maze = new boolean[32][32];
 		maz = new int[32][32];
 		for (int i = 0; i < 32; i++) {
@@ -25,10 +25,6 @@ public class MazeGenerator {
 
 	}
 
-	public static MazeGenerator singletonMazeGenerator() {
-		return mg;
-	}
-
 	public static void main(String[] args) {
 		System.out.print("hi print \n");
 		MazeGenerator m = new MazeGenerator();
@@ -38,16 +34,7 @@ public class MazeGenerator {
 	}
 
 	// ---------------------------------------------------------
-
 	void generate() {
-
-		for (int i = 0; i < 32; i++) {
-			for (int j = 0; j < 32; j++) {
-
-				// if(i==j) maze[i][j]=true;
-				maze[i][j] = true;
-			}
-		}
 	}
 
 	/*

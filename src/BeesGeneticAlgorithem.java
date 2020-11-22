@@ -48,7 +48,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mg = MazeGenerator.singletonMazeGenerator();
+		mg = new MazeGenerator();
 		framerate = 60;
 		pop = new Population(50);
 		lastint = 50;

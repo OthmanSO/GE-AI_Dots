@@ -9,10 +9,8 @@ import javax.swing.JPanel;
 
 class GamePane extends JPanel implements ActionListener {
 
-	MazeGenerator mg;
 
 	public GamePane() {
-		mg = MazeGenerator.singletonMazeGenerator();
 		setBackground(new Color(139, 69, 19));
 		setToolTipText("samples count");
 		setBackground(new Color(139, 69, 19));
@@ -25,7 +23,7 @@ class GamePane extends JPanel implements ActionListener {
 		g2d.setPaint(Color.GREEN);
 		for (int row = 0; row <= 31; row++)
 			for (int col = 0; col <= 31; col++)
-				if (mg.maze[row][col])
+				if (MazeGenerator.isAWall(row,col))
 					g2d.fillRect(row*20, col*20, 20, 20);
 		//drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
 	}
