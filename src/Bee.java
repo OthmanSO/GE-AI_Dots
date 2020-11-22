@@ -20,7 +20,6 @@ public class Bee {
 			// up down right left
 			Random random = new Random();
 			direction_set.add(random.nextInt(4));
-			System.out.println(random.nextInt(4) + "initiat");
 		}
 	}
 

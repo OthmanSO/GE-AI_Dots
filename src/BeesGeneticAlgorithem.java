@@ -160,9 +160,9 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 	private void thisGeneration() {
 		NewGenBtn.disable();
-		pop.runAll();
-		pop.myPromisingBaby();
-		int tmpLoopEnd =Population.bestBeeEver.steps;
+		pop.runAll();// simulate all and apply the fitness function to get best one
+		int tmpLoopEnd = Population.bestBeeEver.steps;
+		System.out.println(tmpLoopEnd + "tmptmptmptmpt");
 		for (int step = 0; step < tmpLoopEnd; step++) {
 			try {
 				TimeUnit.NANOSECONDS.sleep(500);

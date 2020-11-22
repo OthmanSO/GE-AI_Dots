@@ -69,13 +69,13 @@ public class Population {
 		for (Bee b : beesPopulation)
 			if (!b.isDead())
 				b.nextMove();
-		System.out.println("lol");
 	}
 
 	public void runAll() {
 		while (!allDead()) {
 			updateNextMove();
 		}
+		myPromisingBaby();
 	}
 
 	public void simulateNextStepForBestBee(int step) {
