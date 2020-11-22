@@ -3,7 +3,6 @@ public class MazeGenerator {
 
 	static boolean[][] maze;
 	int[][] maz;
-	boolean path, wall;
 	private static MazeGenerator mg = new MazeGenerator();
 	int rows = 32; // number of rows of cells in maze, including a wall around edges
 	int columns = 32; // number of columns of cells in maze, including a wall around edges
@@ -14,11 +13,16 @@ public class MazeGenerator {
 	private MazeGenerator() {
 		maze = new boolean[32][32];
 		maz = new int[32][32];
+		for (int i = 0; i < 32; i++) {
+			for (int j = 0; j < 32; j++) {
+				// if(i==j) maze[i][j]=true;
+				maze[i][j] = false;
+			}
+		}
 		maze[0][0] = true;
 		maze[0][1] = true;
 		maze[31][31] = true;
-		path = true;
-		wall = false;
+		
 	}
 
 	public static MazeGenerator singletonMazeGenerator() {
@@ -37,8 +41,8 @@ public class MazeGenerator {
 
 	void generate() {
 
-		for (int i = 2; i < 31; i++) {
-			for (int j = 0; j < 31; j++) {
+		for (int i = 0; i < 32; i++) {
+			for (int j = 0; j < 32; j++) {
 
 				// if(i==j) maze[i][j]=true;
 				maze[i][j] = true;
@@ -120,16 +124,15 @@ public class MazeGenerator {
 	}
 
 	public static boolean isAWall(int row, int col) {
-
-		return maze[row][col] == false;
-	}
-
-	public boolean isDeadByMaze(int[] position) {
 		try {
-			return maze[position[0]][position[1]];
+			return maze[row][col];
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return true;
 		}
+	}
+
+	public boolean isDeadByMaze(int[] position) {
+			return isAWall(position[0],position[1]);		
 	}
 
 }
