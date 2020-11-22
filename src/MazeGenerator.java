@@ -1,9 +1,8 @@
 
 public class MazeGenerator {
 
-	static boolean[][] maze;
-	static int[][] maz;
-	private static MazeGenerator mg = new MazeGenerator();
+	private static boolean[][] maze;
+	private static int[][] maz;
 	int rows = 32; // number of rows of cells in maze, including a wall around edges
 	int columns = 32; // number of columns of cells in maze, including a wall around edges
 
@@ -16,12 +15,6 @@ public class MazeGenerator {
 
 	}
 
-	/*
-	 * public static void main(String[] args) { System.out.print("hi print \n");
-	 * MazeGenerator m = new MazeGenerator(); // m.generate(); m.printMaz();
-	 * 
-	 * }
-	 */
 
 	// ---------------------------------------------------------
 
@@ -104,22 +97,11 @@ public class MazeGenerator {
 		}
 	}
 
-	public void printMaz() {
-		setMaze();
-		for (int i = 0; i < 32; i++) {
-			for (int j = 0; j < 32; j++) {
-				if (j == 0) {
-					System.out.print("\n");
-				}
-				System.out.print(maze[i][j]);
-				System.out.print("\t |");
-			}
-		}
-	}
 
 	public static boolean isAWall(int row, int col) {
 		try {
 			return maze[row][col];
+			// if ( maze[row][col] == (int that agreed it is wall )return true ;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return true;
 		}
