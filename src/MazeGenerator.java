@@ -18,7 +18,7 @@ public class MazeGenerator {
 	    
 	    
 	    
-	    int n=30;
+	    int n=32;
 	    private boolean[][] north;     // is there a wall to north of cell i, j
 	    private boolean[][] east;
 	    private boolean[][] south;
