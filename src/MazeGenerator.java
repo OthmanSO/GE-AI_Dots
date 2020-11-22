@@ -15,6 +15,9 @@ public class MazeGenerator {
 	private MazeGenerator() {
 		maze = new boolean[32][32];
 		maz= new int [32][32];
+		maze[0][0]=true;
+		maze[0][1]=true;
+		maze[31][31]=true;
 		path = true;
 		wall = false;
 	}
@@ -25,17 +28,25 @@ public class MazeGenerator {
 	public static void main(String[] args) {
 		System.out.print("hi print \n");
 		MazeGenerator m = new MazeGenerator();
-		m.generate();
+		//m.generate();
 		m.printMaz();
 		
 	}
 	
 	//---------------------------------------------------------
 	
-	
-	
-	
 	void generate() {
+		
+		for(int i =2;i<31;i++) {
+			   for(int j =0;j<31;j++) {
+				   
+				//  if(i==j) 	maze[i][j]=true;
+				 maze[i][j]=true;
+			   }}
+	}
+	
+	
+	/*void generate() {
         // Create a random maze.  The strategy is to start with
         // a grid of disconnected "rooms" separated by walls,
         // then look at each of the separating walls, in a random
@@ -77,7 +88,7 @@ public class MazeGenerator {
     
  
     
-}
+}*/
 
 void tearDown(int row, int col) {
         // Tear down a wall, unless doing so will form a loop.  Tearing down a wall
