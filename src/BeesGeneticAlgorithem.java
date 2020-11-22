@@ -169,7 +169,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 				System.out.println("framerat has a problem");
 			}
 			gamePane.repaint();
-
 		}
 		NewGenBtn.enable();
 	}
