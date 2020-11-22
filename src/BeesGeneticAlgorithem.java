@@ -48,8 +48,12 @@ public class BeesGeneticAlgorithem extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		mg = new MazeGenerator();
+		mg.generate();
+
 		framerate = 60;
+
 		pop = new Population(50);
 		lastint = 50;
 		setTitle("Amazy Mazy");
@@ -124,6 +128,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		background.setIcon(new ImageIcon(BeesGeneticAlgorithem.class.getResource("/imgs/mazebackground.jpg")));
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
+		thisGeneration();
 	}
 
 	// regenerate new maze + new population with the number of samples that given in
@@ -132,9 +137,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 		int x;
 		try {
 			x = Integer.parseInt(samplesnum.getText());
+			lastint = x;
+
 		} catch (Exception e) {
-			x = 50;
-			System.out.println("not Acceptable!, U should enter a number . Defult samples set to 50 :)");
+			x = lastint;
+			samplesnum.setText(lastint.toString());
+			System.out.println(
+					"not Acceptable!, U should enter a number . Defult samples set to the last value that u entered :) "
+							+ lastint);
 		}
 		gencount.setText("1");
 		pop = new Population(x);
