@@ -13,12 +13,14 @@ public class Bee {
 		dead = false;
 		reach = false;
 		steps = 0;
-		max_steps = 1000;
+		max_steps = 10;
 
 		direction_set = new ArrayList<Integer>();
 		for (int i = 0; i < max_steps; i++) {
 			// up down right left
-			direction_set.add((int) Math.random() * 4);
+			Random random = new Random();
+			direction_set.add(random.nextInt(4));
+			System.out.println(random.nextInt(4) + "initiat");
 		}
 	}
 
@@ -29,9 +31,9 @@ public class Bee {
 		dead = false;
 		reach = false;
 		this.position = dad.position;
-		this.max_steps = dad.max_steps;
+		this.max_steps = dad.steps;
 		direction_set.clear();
-		for (int i = 0; i < max_steps; i++) {
+		for (int i = 0; i < this.max_steps; i++) {
 			this.direction_set.add(dad.direction_set.get(i));
 		}
 	}
@@ -46,7 +48,6 @@ public class Bee {
 			if (rand < mutationRate) {
 				// set this direction as a random direction
 				dir = random.nextInt(4);
-				System.out.println(dir);
 			}
 		}
 	}
@@ -55,7 +56,14 @@ public class Bee {
 	// up down right left
 	public void nextMove() {
 		steps += 1;
-		int dir = direction_set.get(steps);
+		int dir=0;
+		try {
+		dir = direction_set.get(steps);
+		}catch(IndexOutOfBoundsException e) {
+			dead = true;
+			return;
+		}
+		System.out.println(dir);
 		if (dir == 0) {
 			// up
 			position[1] = position[1] - 1;

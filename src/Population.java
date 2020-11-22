@@ -69,12 +69,23 @@ public class Population {
 		for (Bee b : beesPopulation)
 			if (!b.isDead())
 				b.nextMove();
+		System.out.println("lol");
 	}
 
 	public void runAll() {
 		while (!allDead()) {
 			updateNextMove();
 		}
+	}
+
+	public void simulateNextStepForBestBee(int step) {
+		if (step==0) {
+			bestBeeEver.steps=0;
+			bestBeeEver.position[0]= 0;
+			bestBeeEver.position[1]= 0;
+		}
+		
+		bestBeeEver.nextMove();
 	}
 
 }

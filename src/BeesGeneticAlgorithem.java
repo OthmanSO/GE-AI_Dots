@@ -162,12 +162,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 		NewGenBtn.disable();
 		pop.runAll();
 		pop.myPromisingBaby();
-		for (int step = 0; step < Population.bestBeeEver.steps; step++) {
+		int tmpLoopEnd =Population.bestBeeEver.steps;
+		for (int step = 0; step < tmpLoopEnd; step++) {
 			try {
-				TimeUnit.NANOSECONDS.sleep(1000 / framerate);
+				TimeUnit.NANOSECONDS.sleep(500);
 			} catch (InterruptedException e) {
 				System.out.println("framerat has a problem");
 			}
+			pop.simulateNextStepForBestBee(step);
 			gamePane.repaint();
 		}
 		NewGenBtn.enable();

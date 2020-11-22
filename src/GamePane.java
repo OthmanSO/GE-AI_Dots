@@ -11,6 +11,7 @@ class GamePane extends JPanel implements ActionListener {
 
 
 	public GamePane() {
+		
 		setBackground(new Color(139, 69, 19));
 		setToolTipText("samples count");
 		setBackground(new Color(139, 69, 19));
@@ -25,7 +26,7 @@ class GamePane extends JPanel implements ActionListener {
 			for (int col = 0; col <= 31; col++)
 				if (MazeGenerator.isAWall(row,col))
 					g2d.fillRect(row*20, col*20, 20, 20);
-		//drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
+		drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
 	}
 
 	private void drawBee(Graphics2D g2d, int x, int y) {
