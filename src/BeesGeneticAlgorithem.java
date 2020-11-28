@@ -165,7 +165,8 @@ public class BeesGeneticAlgorithem extends JFrame {
 		System.out.println(tmpLoopEnd + "tmptmptmptmpt");
 		for (int step = 0; step < tmpLoopEnd; step++) {
 			try {
-				TimeUnit.NANOSECONDS.sleep(500);
+				TimeUnit.MILLISECONDS.sleep(1000 / framerate);
+				System.out.println("frame " + step);
 			} catch (InterruptedException e) {
 				System.out.println("framerat has a problem");
 			}

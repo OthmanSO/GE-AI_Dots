@@ -12,6 +12,7 @@ public class Population {
 		for (int i = 0; i < popCount; i++) {
 			beesPopulation[i] = new Bee();
 		}
+		bestBeeEver = beesPopulation[0];
 	}
 
 	// inherit to babies or offsprings ( crossover then mutation )
@@ -79,12 +80,12 @@ public class Population {
 	}
 
 	public void simulateNextStepForBestBee(int step) {
-		if (step==0) {
-			bestBeeEver.steps=0;
-			bestBeeEver.position[0]= 0;
-			bestBeeEver.position[1]= 0;
+		if (step == 0) {
+			bestBeeEver.steps = 0;
+			bestBeeEver.position[0] = 0;
+			bestBeeEver.position[1] = 0;
 		}
-		
+
 		bestBeeEver.nextMove();
 	}
 

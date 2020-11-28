@@ -2,18 +2,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bee {
-	int[] position = { 0, 0 };
-	int max_steps;
-	Target target;
 	ArrayList<Integer> direction_set;
 	int steps;
+	int max_steps;
+	Target target;
 	boolean dead, reach;
-
+	int[] position = { 0, 0 };
 	Bee() {
 		dead = false;
 		reach = false;
 		steps = 0;
-		max_steps = 10;
+		max_steps = 1000;
 
 		direction_set = new ArrayList<Integer>();
 		for (int i = 0; i < max_steps; i++) {
@@ -29,8 +28,9 @@ public class Bee {
 		this.steps = 0;
 		dead = false;
 		reach = false;
-		this.position = dad.position;
-		this.max_steps = dad.steps;
+		this.position[0]=0;
+		this.position[1]=0;
+		this.max_steps = dad.reach? dad.steps:dad.max_steps;
 		direction_set.clear();
 		for (int i = 0; i < this.max_steps; i++) {
 			this.direction_set.add(dad.direction_set.get(i));
@@ -39,7 +39,6 @@ public class Bee {
 
 	// mutation function
 	public void mutate() {
-
 		double mutationRate = 0.05;// chance that any vector in directions gets changed
 		for (Integer dir : direction_set) {
 			Random random = new Random();
@@ -62,7 +61,6 @@ public class Bee {
 			dead = true;
 			return;
 		}
-		System.out.println(dir);
 		if (dir == 0) {
 			// up
 			position[1] = position[1] - 1;
