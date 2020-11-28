@@ -8,7 +8,7 @@ public class Bee {
 	ArrayList<Integer> direction_set;
 	int steps;
 	boolean dead, reach;
-.
+
 	Bee() {
 		dead = false;
 		reach = false;
@@ -55,10 +55,10 @@ public class Bee {
 	// up down right left
 	public void nextMove() {
 		steps += 1;
-		int dir=0;
+		int dir = 0;
 		try {
-		dir = direction_set.get(steps);
-		}catch(IndexOutOfBoundsException e) {
+			dir = direction_set.get(steps);
+		} catch (IndexOutOfBoundsException e) {
 			dead = true;
 			return;
 		}
