@@ -8,7 +8,7 @@ public class Bee {
 	ArrayList<Integer> direction_set;
 	int steps;
 	boolean dead, reach;
-
+.
 	Bee() {
 		dead = false;
 		reach = false;
