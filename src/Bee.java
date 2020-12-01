@@ -8,6 +8,7 @@ public class Bee {
 	Target target;
 	boolean dead, reach;
 	int[] position = { 0, 0 };
+
 	Bee() {
 		dead = false;
 		reach = false;
@@ -24,28 +25,29 @@ public class Bee {
 
 	// called by child and given parent void return//done
 	// crossover
-	public void inheriteFromDad(Bee dad) {
+	public  Bee(Bee dad) {
 		this.steps = 0;
 		dead = false;
 		reach = false;
-		this.position[0]=0;
-		this.position[1]=0;
-		this.max_steps = dad.reach? dad.steps:dad.max_steps;
-		direction_set.clear();
-		for (int i = 0; i < this.max_steps; i++) {
-			this.direction_set.add(dad.direction_set.get(i));
+		this.position[0] = 0;
+		this.position[1] = 0;
+		this.max_steps = dad.reach ? dad.steps : dad.max_steps;
+		direction_set = new ArrayList<Integer>(dad.direction_set);
+		for (int i = this.max_steps; i < dad.max_steps; i++) {
+			this.direction_set.remove(dad.direction_set.get(i));
 		}
 	}
 
 	// mutation function
 	public void mutate(int factor) {
-		double mutationRate = 0.05*factor;// chance that any vector in directions gets changed
+		double mutationRate = 0.05 * factor;// chance that any vector in directions gets changed
 		Random random = new Random();
-		for (Integer dir : direction_set) {
-			float rand = random.nextInt(1);
+		for (int i = 0; i < this.max_steps; i++) {
+			float rand = random.nextFloat();
 			if (rand < mutationRate) {
 				// set this direction as a random direction
-				dir = random.nextInt(4);
+				direction_set.remove(i);
+				direction_set.add(i, random.nextInt(4));
 			}
 		}
 	}
@@ -77,13 +79,13 @@ public class Bee {
 	}
 
 	public boolean isDead() {
-
 		dead = (dead || MazeGenerator.isDeadByMaze(position));
 		return dead;
 	}
 
 	public boolean isReached() {
 		reach = reach ? true : DistanceToTarget() == 0;
+		if(reach)System.out.println("reach");
 		return reach;
 	}
 

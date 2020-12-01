@@ -34,6 +34,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				System.out.println("constructer constructer");
 				try {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
@@ -52,7 +53,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		mg = new MazeGenerator();
 		mg.generate();
 
-		framerate = 60;
+		framerate = 1000;
 
 		pop = new Population(50);
 		lastint = 50;
@@ -129,6 +130,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
 		thisGeneration();
+		System.out.println("yes papa!");
 	}
 
 	// regenerate new maze + new population with the number of samples that given in
@@ -161,18 +163,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private void thisGeneration() {
 		NewGenBtn.disable();
 		pop.runAll();// simulate all and apply the fitness function to get best one
-		int tmpLoopEnd = Population.bestBeeEver.steps;
-		System.out.println(tmpLoopEnd + "tmptmptmptmpt");
-		for (int step = 0; step < tmpLoopEnd; step++) {
-			try {
-				TimeUnit.MILLISECONDS.sleep(1000 / framerate);
-				System.out.println("frame " + step);
-			} catch (InterruptedException e) {
-				System.out.println("framerat has a problem");
-			}
-			pop.simulateNextStepForBestBee(step);
-			gamePane.repaint();
-		}
+		pop.simulateNextStepForBestBee(gamePane, framerate);
 		NewGenBtn.enable();
 	}
 }

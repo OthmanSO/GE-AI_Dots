@@ -8,10 +8,10 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 class GamePane extends JPanel implements ActionListener {
-
+	static Bee b;
 
 	public GamePane() {
-		
+
 		setBackground(new Color(139, 69, 19));
 		setToolTipText("samples count");
 		setBackground(new Color(139, 69, 19));
@@ -20,16 +20,22 @@ class GamePane extends JPanel implements ActionListener {
 	}
 
 	private void doDrawing(Graphics g) {
+
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		System.out.println("frame");
+		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setPaint(Color.GREEN);
 		for (int row = 0; row <= 31; row++)
 			for (int col = 0; col <= 31; col++)
-				if (MazeGenerator.isAWall(row,col))
-					g2d.fillRect(row*20, col*20, 20, 20);
-		drawBee(g2d, Population.bestBeeEver.position[0] * 20, Population.bestBeeEver.position[1] * 20);
-	}
-
-	private void drawBee(Graphics2D g2d, int x, int y) {
+				if (MazeGenerator.isAWall(row, col))
+					g2d.fillRect(row * 20, col * 20, 20, 20);
+		int x = b.position[0] * 20;
+		int y = b.position[1] * 20;
+		System.out.println(x + "," + y);
 		g2d.setPaint(Color.yellow);
 		g2d.drawLine(x + 4, y, x + 5, y + 1);
 		g2d.drawLine(x + 1, y + 3, x + 8, y + 3);
@@ -43,13 +49,7 @@ class GamePane extends JPanel implements ActionListener {
 		g2d.drawLine(x + 4, y + 4, x + 5, y + 5);
 		g2d.drawLine(x + 1, y + 7, x + 8, y + 7);
 		g2d.drawLine(x + 2, y + 8, x + 7, y + 8);
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-
-		super.paintComponent(g);
-		doDrawing(g);
+		System.out.println("frame updated");
 	}
 
 	@Override
