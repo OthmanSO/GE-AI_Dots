@@ -38,10 +38,10 @@ public class Bee {
 	}
 
 	// mutation function
-	public void mutate() {
-		double mutationRate = 0.05;// chance that any vector in directions gets changed
+	public void mutate(int factor) {
+		double mutationRate = 0.05*factor;// chance that any vector in directions gets changed
+		Random random = new Random();
 		for (Integer dir : direction_set) {
-			Random random = new Random();
 			float rand = random.nextInt(1);
 			if (rand < mutationRate) {
 				// set this direction as a random direction

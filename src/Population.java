@@ -22,19 +22,16 @@ public class Population {
 	// If a bee reached then 90% of the population mutate from the bestBee in
 	// the past generation and the other 10% are scouts for another routes if found
 	// if no bee reached the target yet then 50% only will mutate from bestBee
-	// others are scouts in case of misleading fitness function
+	// others are scouts in case of misleading fitness function so they have given more 
+	// chance to be mutated
 	public void crosssverAndMutation() {
 		double lim;
 		lim = reached ? 0.9 : 0.5;
 		beesPopulation[0] = bestBeeEver;
-		for (int index = 1; index < (int) popCount * lim; index++) {
+		for (int index = 1; index < popCount ; index++) {
 			beesPopulation[index].inheriteFromDad(beesPopulation[0]);
-			beesPopulation[index].mutate();
+			beesPopulation[index].mutate(index < (int) popCount * lim? 1 : 3 );
 		}
-		for (int index = (int) (popCount * lim); index < popCount; index++) {
-			beesPopulation[index] = new Bee();
-		}
-
 	}
 
 	// fitness function that gets the distance between each Bee and target if none
