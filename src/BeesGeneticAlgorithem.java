@@ -35,7 +35,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				System.out.println("constructer constructer");
 				try {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
@@ -135,7 +134,6 @@ public class BeesGeneticAlgorithem extends JFrame {
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
 		thisGeneration();
-		System.out.println("yes papa!");
 	}
 
 	// regenerate new maze + new population with the number of samples that given in
