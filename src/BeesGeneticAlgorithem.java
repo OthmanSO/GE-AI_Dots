@@ -36,8 +36,11 @@ public class BeesGeneticAlgorithem extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					System.out.println("constructer constructer1");
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
+					System.out.println("constructer constructer22");
 					frame.setVisible(true);
+				
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,6 +55,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mg = new MazeGenerator();
+
 		mg.generate();
 
 		framerate = 10;
