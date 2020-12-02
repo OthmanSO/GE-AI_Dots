@@ -33,14 +33,13 @@ public class BeesGeneticAlgorithem extends JFrame {
 	
 
 	public static void main(String[] args) {
-		System.out.print("hi");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				System.out.println("constructer constructer");
 				try {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
-					System.out.print("hi1");
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
