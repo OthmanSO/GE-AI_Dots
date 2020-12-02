@@ -9,14 +9,11 @@ import javax.swing.Timer;
 
 class GamePane extends JPanel implements ActionListener, Runnable {
 	static Bee b;
-
 	Timer timer;
 
 	public GamePane() {
-
 		setBackground(new Color(139, 69, 19));
 		setToolTipText("samples count");
-		setBackground(new Color(139, 69, 19));
 		setBounds(30, 10, 640, 640);
 		setLayout(null);
 	}
@@ -24,7 +21,6 @@ class GamePane extends JPanel implements ActionListener, Runnable {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		System.out.println("frame");
 		super.paintComponent(g);
 		if (!(b.isDead()))
 			b.nextMove();
@@ -35,7 +31,6 @@ class GamePane extends JPanel implements ActionListener, Runnable {
 					g2d.fillRect(row * 20, col * 20, 20, 20);
 		int x = b.position[0] * 20;
 		int y = b.position[1] * 20;
-		System.out.println(x + "," + y);
 		g2d.setPaint(Color.yellow);
 		g2d.fillRect(x + 5, y + 2, 8, 2);
 		g2d.fillRect(x + 3, y + 5, 14, 2);
@@ -50,7 +45,6 @@ class GamePane extends JPanel implements ActionListener, Runnable {
 		g2d.fillRect(x + 6, y + 7, 8, 4);
 		g2d.fillRect(x + 4, y + 13, 12, 2);
 		g2d.fillRect(x + 8, y + 1, 4, 2);
-		System.out.println("frame updated");
 	}
 
 	@Override
