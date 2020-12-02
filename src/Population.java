@@ -44,12 +44,15 @@ public class Population {
 	public void myPromisingBaby() {
 		reached = bestBeeEver.isReached();
 		for (Bee b : beesPopulation) {
-			if (reached && b.isReached() && b.steps < bestBeeEver.steps) {
+			if (reached) {
+				if (b.isReached() && b.steps < bestBeeEver.steps) {
+					bestBeeEver = b;
+				} else
+					continue;
+
+			} else if (b.isReached())
 				bestBeeEver = b;
-				reached = true;
-			} else if (b.isReached() && !reached)
-				bestBeeEver = b;
-			else if (!reached && b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
+			else if (b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
 				bestBeeEver = b;
 		}
 	}
@@ -63,7 +66,7 @@ public class Population {
 
 	public void updateNextMove() {
 		for (Bee b : beesPopulation)
-			if (!b.isDead() && !b.isReached())
+			if (!(b.isDead() || b.isReached()))
 				b.nextMove();
 	}
 
@@ -76,20 +79,15 @@ public class Population {
 
 	public void simulateNextStepForBestBee(GamePane gamePane, int framerate) {
 		Bee b = new Bee(bestBeeEver);
-		b.steps = 0;
-		b.position[0] = 0;
-		b.position[1] = 0;
-		b.dead = false;
 		GamePane.b = b;
 		while (!b.isDead() && !b.isReached()) {
 			b.nextMove();
+			System.out.println("whatever");
 			try {
 				TimeUnit.MILLISECONDS.sleep(1000 / framerate);
 			} catch (InterruptedException e) {
 				System.out.println("framerat has a problem");
 			}
-			gamePane.repaint();
-			gamePane.revalidate();
 		}
 
 	}

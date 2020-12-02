@@ -6,9 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 class GamePane extends JPanel implements ActionListener {
 	static Bee b;
+
+	Timer timer;
 
 	public GamePane() {
 
@@ -17,6 +20,11 @@ class GamePane extends JPanel implements ActionListener {
 		setBackground(new Color(139, 69, 19));
 		setBounds(30, 10, 640, 640);
 		setLayout(null);
+	}
+
+	public void setFrameRate(int framerate) {
+		timer = new Timer(1000 / framerate, this);
+		timer.start();
 	}
 
 	private void doDrawing(Graphics g) {
@@ -34,7 +42,11 @@ class GamePane extends JPanel implements ActionListener {
 				if (MazeGenerator.isAWall(row, col))
 					g2d.fillRect(row * 20, col * 20, 20, 20);
 		int x = b.position[0] * 20;
+		x = x > 640 ? 620 : x;
+		x = x < 0 ? 0 : x;
 		int y = b.position[1] * 20;
+		y = y > 640 ? 620 : y;
+		y = y < 0 ? 0 : y;
 		System.out.println(x + "," + y);
 		g2d.setPaint(Color.yellow);
 		g2d.drawLine(x + 4, y, x + 5, y + 1);
@@ -54,6 +66,8 @@ class GamePane extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		repaint();
+		if (e.getSource() == timer) {
+			repaint();// this will call at every 1 second
+		}
 	}
 }

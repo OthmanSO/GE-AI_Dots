@@ -53,7 +53,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		mg = new MazeGenerator();
 		mg.generate();
 
-		framerate = 1000;
+		framerate = 60;
 
 		pop = new Population(50);
 		lastint = 50;
@@ -107,6 +107,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		gamePane = new GamePane();
+		gamePane.setFrameRate(framerate);
 		contentPane.add(gamePane);
 
 		NewGenBtn = new JButton("Next generation");
