@@ -1,4 +1,3 @@
-import java.util.concurrent.TimeUnit;
 
 public class Population {
 
@@ -80,16 +79,6 @@ public class Population {
 	public void simulateNextStepForBestBee(GamePane gamePane, int framerate) {
 		Bee b = new Bee(bestBeeEver);
 		GamePane.b = b;
-		while (!b.isDead() && !b.isReached()) {
-			b.nextMove();
-			System.out.println("whatever");
-			try {
-				TimeUnit.MILLISECONDS.sleep(1000 / framerate);
-			} catch (InterruptedException e) {
-				System.out.println("framerat has a problem");
-			}
-		}
-
 	}
 
 }

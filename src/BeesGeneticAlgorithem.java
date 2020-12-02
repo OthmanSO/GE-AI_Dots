@@ -14,7 +14,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.Toolkit;
@@ -28,8 +27,10 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private MazeGenerator mg;
 	private Population pop;
 	private int framerate;
-	GamePane gamePane;
-	JButton NewGenBtn;
+	private GamePane gamePane;
+	private JButton NewGenBtn;
+	private Thread t ;
+	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,8 +45,8 @@ public class BeesGeneticAlgorithem extends JFrame {
 			}
 		});
 	}
-
-	public BeesGeneticAlgorithem() {
+	
+	private BeesGeneticAlgorithem() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +54,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		mg = new MazeGenerator();
 		mg.generate();
 
-		framerate = 60;
+		framerate = 1000;
 
 		pop = new Population(50);
 		lastint = 50;
@@ -108,6 +109,8 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 		gamePane = new GamePane();
 		gamePane.setFrameRate(framerate);
+		t = new Thread(gamePane);
+		t.run();
 		contentPane.add(gamePane);
 
 		NewGenBtn = new JButton("Next generation");
