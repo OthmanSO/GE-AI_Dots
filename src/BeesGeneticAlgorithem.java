@@ -32,11 +32,13 @@ public class BeesGeneticAlgorithem extends JFrame {
 	JButton NewGenBtn;
 
 	public static void main(String[] args) {
+		System.out.print("hi");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
+					System.out.print("hi1");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,7 +54,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		mg = new MazeGenerator();
 		mg.generate();
 
-		framerate = 60;
+		framerate = 10;
 
 		pop = new Population(50);
 		lastint = 50;
