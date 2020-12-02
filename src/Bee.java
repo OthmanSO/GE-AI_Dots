@@ -55,8 +55,7 @@ public class Bee {
 	// next move add the movement to the next position
 	// up down right left
 	public void nextMove() {
-		steps += 1;
-		int dir = 0;
+		int dir ;
 		try {
 			dir = direction_set.get(steps);
 		} catch (IndexOutOfBoundsException e) {
@@ -76,6 +75,7 @@ public class Bee {
 			// left
 			position[0] = position[0] - 1;
 		}
+		steps += 1;
 	}
 
 	public boolean isDead() {
