@@ -14,7 +14,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.Toolkit;
@@ -28,13 +27,16 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private MazeGenerator mg;
 	private Population pop;
 	private int framerate;
-	GamePane gamePane;
-	JButton NewGenBtn;
+	private GamePane gamePane;
+	private JButton NewGenBtn;
+	private Thread t ;
+	
 
 	public static void main(String[] args) {
 		System.out.print("hi");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				System.out.println("constructer constructer");
 				try {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					frame.setVisible(true);
@@ -45,8 +47,8 @@ public class BeesGeneticAlgorithem extends JFrame {
 			}
 		});
 	}
-
-	public BeesGeneticAlgorithem() {
+	
+	private BeesGeneticAlgorithem() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,6 +110,9 @@ public class BeesGeneticAlgorithem extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		gamePane = new GamePane();
+		gamePane.setFrameRate(framerate);
+		t = new Thread(gamePane);
+		t.run();
 		contentPane.add(gamePane);
 
 		NewGenBtn = new JButton("Next generation");
@@ -131,6 +136,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		background.setBounds(0, 0, 1042, 700);
 		contentPane.add(background);
 		thisGeneration();
+		System.out.println("yes papa!");
 	}
 
 	// regenerate new maze + new population with the number of samples that given in
@@ -163,17 +169,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private void thisGeneration() {
 		NewGenBtn.disable();
 		pop.runAll();// simulate all and apply the fitness function to get best one
-		int tmpLoopEnd = Population.bestBeeEver.steps;
-		System.out.println(tmpLoopEnd + "tmptmptmptmpt");
-		for (int step = 0; step < tmpLoopEnd; step++) {
-			try {
-				TimeUnit.NANOSECONDS.sleep(500);
-			} catch (InterruptedException e) {
-				System.out.println("framerat has a problem");
-			}
-			pop.simulateNextStepForBestBee(step);
-			gamePane.repaint();
-		}
+		pop.simulateNextStepForBestBee(gamePane, framerate);
 		NewGenBtn.enable();
 	}
 }

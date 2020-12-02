@@ -12,6 +12,7 @@ public class Population {
 		for (int i = 0; i < popCount; i++) {
 			beesPopulation[i] = new Bee();
 		}
+		bestBeeEver = beesPopulation[0];
 	}
 
 	// inherit to babies or offsprings ( crossover then mutation )
@@ -21,19 +22,15 @@ public class Population {
 	// If a bee reached then 90% of the population mutate from the bestBee in
 	// the past generation and the other 10% are scouts for another routes if found
 	// if no bee reached the target yet then 50% only will mutate from bestBee
-	// others are scouts in case of misleading fitness function
+	// others are scouts in case of misleading fitness function so they have given
+	// more chance to be mutated
 	public void crosssverAndMutation() {
 		double lim;
 		lim = reached ? 0.9 : 0.5;
-		beesPopulation[0] = bestBeeEver;
-		for (int index = 1; index < (int) popCount * lim; index++) {
-			beesPopulation[index].inheriteFromDad(beesPopulation[0]);
-			beesPopulation[index].mutate();
+		for (int index = 0; index < popCount; index++) {
+			beesPopulation[index] = new Bee(bestBeeEver);
+			beesPopulation[index].mutate(index < (int) popCount * lim ? 1 : 3);
 		}
-		for (int index = (int) (popCount * lim); index < popCount; index++) {
-			beesPopulation[index] = new Bee();
-		}
-
 	}
 
 	// fitness function that gets the distance between each Bee and target if none
@@ -44,13 +41,14 @@ public class Population {
 	// - if more than one has the same fitness the one that occurs first will be
 	// token -
 	public void myPromisingBaby() {
-		if (bestBeeEver == null)
-			bestBeeEver = beesPopulation[0];
+		reached = bestBeeEver.isReached();
 		for (Bee b : beesPopulation) {
-			if (bestBeeEver.isReached()) {
-				if (b.isReached() && b.steps < bestBeeEver.steps)
+			if (reached) {
+				if (b.isReached() && b.steps < bestBeeEver.steps) {
 					bestBeeEver = b;
-				reached = true;
+				} else
+					continue;
+
 			} else if (b.isReached())
 				bestBeeEver = b;
 			else if (b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
@@ -67,7 +65,7 @@ public class Population {
 
 	public void updateNextMove() {
 		for (Bee b : beesPopulation)
-			if (!b.isDead())
+			if (!(b.isDead() || b.isReached()))
 				b.nextMove();
 	}
 
@@ -78,14 +76,9 @@ public class Population {
 		myPromisingBaby();
 	}
 
-	public void simulateNextStepForBestBee(int step) {
-		if (step==0) {
-			bestBeeEver.steps=0;
-			bestBeeEver.position[0]= 0;
-			bestBeeEver.position[1]= 0;
-		}
-		
-		bestBeeEver.nextMove();
+	public void simulateNextStepForBestBee(GamePane gamePane, int framerate) {
+		Bee b = new Bee(bestBeeEver);
+		GamePane.b = b;
 	}
 
 }
