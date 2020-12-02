@@ -54,7 +54,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 		mg = new MazeGenerator();
 		mg.generate();
 
-		framerate = 1000;
+		framerate = 10;
 
 		pop = new Population(50);
 		lastint = 50;
