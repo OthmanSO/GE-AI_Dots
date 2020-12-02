@@ -124,9 +124,9 @@ void fill(int row, int col, int replace, int replaceWith) {
 	public static boolean isAWall(int row, int col) {
 		try {
 			//return maze[row][col];
-			if ( maze[row][col] == 1  )return false ;
+			if ( maze[row][col] == 1  )return false;
 		} catch (ArrayIndexOutOfBoundsException e) {
-			return true;
+			return false;
 		}
 		return true;
 	}

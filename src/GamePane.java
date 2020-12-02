@@ -29,8 +29,8 @@ class GamePane extends JPanel implements ActionListener, Runnable {
 		if (!(b.isDead()))
 			b.nextMove();
 		g2d.setPaint(Color.GREEN);
-		for (int row = 0; row <= 31; row++)
-			for (int col = 0; col <= 31; col++)
+		for (int row = 0; row < 31; row++)
+			for (int col = 0; col < 31; col++)
 				if (MazeGenerator.isAWall(row, col))
 					g2d.fillRect(row * 20, col * 20, 20, 20);
 		int x = b.position[0] * 20;
