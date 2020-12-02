@@ -23,9 +23,8 @@ public class Bee {
 		}
 	}
 
-	// called by child and given parent void return//done
 	// crossover
-	public  Bee(Bee dad) {
+	public Bee(Bee dad) {
 		this.steps = 0;
 		dead = false;
 		reach = false;
@@ -55,7 +54,7 @@ public class Bee {
 	// next move add the movement to the next position
 	// up down right left
 	public void nextMove() {
-		int dir ;
+		int dir;
 		try {
 			dir = direction_set.get(steps);
 		} catch (IndexOutOfBoundsException e) {
@@ -85,7 +84,8 @@ public class Bee {
 
 	public boolean isReached() {
 		reach = reach ? true : DistanceToTarget() == 0;
-		if(reach)System.out.println("reach");
+		if (reach)
+			System.out.println("reach");
 		return reach;
 	}
 

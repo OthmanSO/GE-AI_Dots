@@ -48,7 +48,6 @@ public class Population {
 					bestBeeEver = b;
 				} else
 					continue;
-
 			} else if (b.isReached())
 				bestBeeEver = b;
 			else if (b.DistanceToTarget() < bestBeeEver.DistanceToTarget())
