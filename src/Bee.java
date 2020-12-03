@@ -24,6 +24,7 @@ public class Bee {
 	}
 
 	// crossover
+	// done as a copy constructor 
 	public Bee(Bee dad) {
 		this.steps = 0;
 		dead = false;
