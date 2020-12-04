@@ -29,7 +29,7 @@ public class Population {
 		lim = reached ? 0.9 : 0.5;
 		for (int index = 0; index < popCount; index++) {
 			beesPopulation[index] = new Bee(bestBeeEver);
-			beesPopulation[index].mutate(index < (int) popCount * lim ? 1 : 3);
+			beesPopulation[index].mutate(index < (int) popCount * lim ? 1 : 5);
 		}
 	}
 

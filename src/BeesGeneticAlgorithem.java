@@ -29,8 +29,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	private int framerate;
 	private GamePane gamePane;
 	private JButton NewGenBtn;
-	private Thread t ;
-	
+	private Thread t;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -40,15 +39,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 					BeesGeneticAlgorithem frame = new BeesGeneticAlgorithem();
 					System.out.println("constructer constructer22");
 					frame.setVisible(true);
-				
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-	
+
 	private BeesGeneticAlgorithem() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BeesGeneticAlgorithem.class.getResource("/imgs/bee.png")));
@@ -58,7 +56,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 
 		mg.generate();
 
-		framerate = 10;
+		framerate = 5;
 
 		pop = new Population(50);
 		lastint = 50;
@@ -122,10 +120,14 @@ public class BeesGeneticAlgorithem extends JFrame {
 		NewGenBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				newGeneration();
-				Integer tmp;
-				tmp = Integer.parseInt(gencount.getText()) + 1;
-				gencount.setText(tmp.toString());
+				NewGenBtn.disable();
+				for (int i = 0; i < 100; i++) {
+					newGeneration();
+					Integer tmp;
+					tmp = Integer.parseInt(gencount.getText()) + 1;
+					gencount.setText(tmp.toString());
+				}
+				NewGenBtn.enable();
 			}
 		});
 
@@ -168,9 +170,7 @@ public class BeesGeneticAlgorithem extends JFrame {
 	}
 
 	private void thisGeneration() {
-		NewGenBtn.disable();
 		pop.runAll();// simulate all and apply the fitness function to get best one
 		pop.simulateNextStepForBestBee(gamePane, framerate);
-		NewGenBtn.enable();
 	}
 }
