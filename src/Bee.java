@@ -7,7 +7,7 @@ public class Bee {
 	int max_steps;
 	Target target;
 	boolean dead, reach;
-	int[] position = { 0, 0 };
+	int[] position = { 1, 1 };
 
 	Bee() {
 		dead = false;
@@ -29,8 +29,8 @@ public class Bee {
 		this.steps = 0;
 		dead = false;
 		reach = false;
-		this.position[0] = 0;
-		this.position[1] = 0;
+		this.position[0] = 1;
+		this.position[1] = 1;
 		this.max_steps = dad.reach ? dad.steps : dad.max_steps;
 		direction_set = new ArrayList<Integer>(dad.direction_set);
 		for (int i = this.max_steps; i < dad.max_steps; i++) {
