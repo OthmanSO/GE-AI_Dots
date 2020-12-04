@@ -1,7 +1,9 @@
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class MazeGenerator {
+import javax.swing.JPanel;
+
+public class MazeGenerator extends  JPanel {
 
 
 	private static int[][] maze;
@@ -58,27 +60,22 @@ public class MazeGenerator {
             if (i < rows-2) {  // record info about wall below this room
                 wallrow[wallCt] = i+1;
                 wallcol[wallCt] = j;
-                wallCt++;
-            }
+                wallCt++; }
             if (j < columns-2) {  // record info about wall to right of this room
                 wallrow[wallCt] = i;
                 wallcol[wallCt] = j+1;
-                wallCt++;
-            }
-        }
-  
+                wallCt++; }}
+    repaint();
     int r;
     for (i=wallCt-1; i>0; i--) {
         r = (int)(Math.random() * i);  // choose a wall randomly and maybe tear it down
         tearDown(wallrow[r],wallcol[r]);
         wallrow[r] = wallrow[i];
-        wallcol[r] = wallcol[i];
-    }
+        wallcol[r] = wallcol[i]; }
     for (i=1; i<rows-1; i++)  // replace negative values in maze[][] with emptyCode
         for (j=1; j<columns-1; j++)
             if (maze[i][j] < 0)
-                maze[i][j] = emptyCode;
-}
+                maze[i][j] = emptyCode;}
 
 synchronized void tearDown(int row, int col) {
         int speedSleep=5000;
