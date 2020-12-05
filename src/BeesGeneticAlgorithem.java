@@ -121,12 +121,12 @@ public class BeesGeneticAlgorithem extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				NewGenBtn.disable();
-				// for (int i = 0; i < 100; i++) {
+
 				newGeneration();
 				Integer tmp;
 				tmp = Integer.parseInt(gencount.getText()) + 1;
 				gencount.setText(tmp.toString());
-				// }
+
 				NewGenBtn.enable();
 			}
 		});
